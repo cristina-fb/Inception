@@ -1,0 +1,16 @@
+version: '2'
+services:
+        nginx:
+                container_name: my_nginx
+                build: ./requirements/nginx
+                restart: on-failure
+                ports: 
+                        - 443:443
+                env_file:
+                        - .env
+        wordpress:
+                container_name: my_wordpress
+                build: ./requirements/wordpress
+                restart: on-failure
+                env_file:
+                        - .env
