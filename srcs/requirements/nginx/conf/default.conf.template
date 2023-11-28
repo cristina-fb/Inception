@@ -12,5 +12,11 @@ server{
 	index index.php index.nginx-debian.html;
 
 	server_name ${DOMAIN_NAME};
+	
+	location ~\.php$ {
+		include fastcgi_params;
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass 127.0.0.1:9000;
+	}
 
 }

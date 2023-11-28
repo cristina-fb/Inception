@@ -8,9 +8,25 @@ services:
                         - 443:443
                 env_file:
                         - .env
+                volumes:
+                        - ./requirements/wordpress/tools:/var/www/html
         wordpress:
                 container_name: my_wordpress
                 build: ./requirements/wordpress
                 restart: on-failure
                 env_file:
                         - .env
+                volumes:
+                        - ./requirements/wordpress/tools:/var/www/html
+        mariadb:
+                container_name: my_mariadb
+                build: ./requirements/mariadb
+                restart: on-failure
+                env_file:
+                        - .env
+                volumes:
+                        - DB:/var/lib/mysql
+volumes:
+        DB:
+
+
