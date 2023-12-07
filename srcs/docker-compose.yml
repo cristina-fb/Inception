@@ -9,7 +9,7 @@ services:
                 env_file:
                         - .env
                 volumes:
-                        - ./requirements/wordpress/tools:/var/www/html
+                        - WP:/var/www/html
         wordpress:
                 container_name: my_wordpress
                 build: ./requirements/wordpress
@@ -17,7 +17,7 @@ services:
                 env_file:
                         - .env
                 volumes:
-                        - ./requirements/wordpress/tools:/var/www/html
+                        - WP:/var/www/html
         mariadb:
                 container_name: my_mariadb
                 build: ./requirements/mariadb
@@ -28,5 +28,6 @@ services:
                         - DB:/var/lib/mysql
 volumes:
         DB:
+        WP:
 
 

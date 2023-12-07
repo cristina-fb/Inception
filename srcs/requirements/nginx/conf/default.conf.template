@@ -7,16 +7,20 @@ server{
 	ssl_certificate /etc/ssl/rootCA.crt;
 	ssl_certificate_key /etc/ssl/rootCA.key;	
 
-	root /var/www/html;
+	root /var/www/html/;
 
 	index index.php index.nginx-debian.html;
 
 	server_name ${DOMAIN_NAME};
 	
 	location ~\.php$ {
+		try_files  $uri = 404;
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass wordpress:9000;
+		fastcgi_index index.php;
 		include fastcgi_params;
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PATH_INFO $fastcgi_path_info;
 	}
 
 }
