@@ -24,6 +24,7 @@ clean:
 
 fclean: clean
 	sudo docker system prune -a -f
+	sudo docker volume rm srcs_WP srcs_DB
 
 re: fclean all
 
