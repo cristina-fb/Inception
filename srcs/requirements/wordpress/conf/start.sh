@@ -11,10 +11,8 @@ then
 	wp theme install bravada --activate --allow-root
 	wp post delete 1 --allow-root
 	wp post delete 2 --allow-root
-	export post_cat=$(wp term create category "Rob me va a matar por hacer demasiadas pijadas en vez de entregar y ponerme a transcender" --porcelain --allow-root)
+	export post_cat=$(wp term create category "Rodri me va a matar por hacer demasiadas pijadas en vez de entregar y ponerme a transcender" --porcelain --allow-root)
 	export page_id=$(wp post create ./post.txt  --post_title='Es la hora del chisme!'  --tags_input="42, procrastinacion" --post_status=publish --post_category=$post_cat --porcelain --allow-root)
-	wp option update page_on_front $page_id --allow-root
-	wp option update show_on_front page --allow-root
 	wp theme mod set header_image https://wallpapers.com/images/hd/cool-aesthetic-japanese-anime-city-o6nokrk4nduiinvx.jpg --allow-root
 fi
 

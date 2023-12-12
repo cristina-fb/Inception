@@ -30,7 +30,7 @@ clean:
 fclean: clean
 	sudo docker system prune -a -f
 	sudo docker volume rm -f srcs_WP srcs_DB
-	sudo rm -rf $(WP) $(DB)
+	sudo rm -rf $(WPV) $(DBV)
 
 re: fclean all
 
