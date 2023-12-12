@@ -13,10 +13,15 @@
 COMPOSE = srcs/docker-compose.yml
 
 NAME = Inception
-	
+
+DBV = '/home/crisfern/data/DB' 
+
+WPV = '/home/crisfern/data/WP'
+
 $(NAME): all
 
 all:
+	mkdir -p $(DBV) $(WPV)
 	sudo docker compose -f $(COMPOSE) up -d
 
 clean:
@@ -24,7 +29,8 @@ clean:
 
 fclean: clean
 	sudo docker system prune -a -f
-	sudo docker volume rm srcs_WP srcs_DB
+	sudo docker volume rm -f srcs_WP srcs_DB
+	sudo rm -rf $(WP) $(DB)
 
 re: fclean all
 

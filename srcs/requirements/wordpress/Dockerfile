@@ -1,6 +1,6 @@
 FROM debian:buster
 
-COPY ./conf/index.php .
+COPY ./conf/post.txt .
 COPY ./conf/start.sh .
 
 RUN apt-get update;\
@@ -13,7 +13,5 @@ RUN apt-get update;\
 	mkdir /run/php;\
 	chmod 755 ./start.sh ./config.sh;\
 	sed -i 's/^listen .*$/listen = 9000/' /etc/php/7.3/fpm/pool.d/www.conf;
-
-#CMD tail -f /dev/null
 
 CMD ["./start.sh"]
